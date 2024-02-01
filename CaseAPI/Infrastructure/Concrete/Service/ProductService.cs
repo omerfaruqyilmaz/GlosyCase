@@ -52,7 +52,7 @@ namespace CaseAPI.Infrastructure.Concrete.Service
         {
             DataResult dataResult = new();
 
-            Product product = await _productQuery.Get(x => x.Id == id);
+            Product product = await _productQuery.Get(x => x.Id == id && x.IsStatus == true && x.IsDeleted == false);
 
             if (product is null)
             {
@@ -95,7 +95,7 @@ namespace CaseAPI.Infrastructure.Concrete.Service
         {
             DataResult dataResult = new();
 
-            Product product = await _productQuery.Get(x => x.Id == request.Id);
+            Product product = await _productQuery.Get(x => x.Id == request.Id && x.IsStatus == true && x.IsDeleted == false);
 
             if (product is null)
             {
